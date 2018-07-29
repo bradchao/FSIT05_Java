@@ -2,24 +2,50 @@ package tw.org.iii.mytest;
 
 public class TWId {
 	private String id;
+	static final String letters = "ABCDEFGHJKLMNPQRSTUVXYWZIO";
 	
 	TWId(){
-		
+		this((int)(Math.random()*2)==0);
 	}
 	TWId(boolean isMale){
-		
+		this(isMale,(int)(Math.random()*26));
 	}
 	TWId(int area){
-		
+		this((int)(Math.random()*2)==0,area);
 	}
 	TWId(boolean isMale, int area){
-		
+		String i1 = letters.substring(area,area+1);
+		String i2 = isMale?"1":"2";
+		String newid = i1.concat(i2)
+				.concat(String.valueOf((int)(Math.random()*10)))
+				.concat(String.valueOf((int)(Math.random()*10)))
+				.concat(String.valueOf((int)(Math.random()*10)))
+				.concat(String.valueOf((int)(Math.random()*10)))
+				.concat(String.valueOf((int)(Math.random()*10)))
+				.concat(String.valueOf((int)(Math.random()*10)))
+				.concat(String.valueOf((int)(Math.random()*10)));
+		for (int i=0; i<=9; i++) {
+			if (checkId(newid+i)) {
+				this.id = newid + i;
+				break;
+			}
+		}
+	}
+	private TWId(String id){
+		this.id = id;
+	}
+	static TWId createTWId(String id) {
+		if (checkId(id)) {
+			return new TWId(id);
+		}else {
+			return null;
+		}
 	}
 	
 	static boolean checkId(String id) {
 		boolean isRight = false;
 		if (id.matches("^[A-Z][12][0-9]{8}$")) {
-			String letters = "ABCDEFGHJKLMNPQRSTUVXYWZIO";
+			
 			int n12 = letters.indexOf(id.charAt(0)) + 10;
 			int n1 = n12 / 10;
 			int n2 = n12 % 10;
@@ -38,4 +64,18 @@ public class TWId {
 		}
 		return isRight;
 	}
+	
+	String getId() {return id;}
+	
+	boolean isMale() {
+		
+		return true;
+	}
+	
+	String getArea() {
+		
+		return "台中市";
+	}
+	
+	
 }
