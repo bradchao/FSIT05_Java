@@ -1,6 +1,6 @@
 package tw.org.iii.mytest;
 
-public class TWId {
+public class TWId extends Object{
 	private String id;
 	static final String letters = "ABCDEFGHJKLMNPQRSTUVXYWZIO";
 	
@@ -14,6 +14,7 @@ public class TWId {
 		this((int)(Math.random()*2)==0,area);
 	}
 	TWId(boolean isMale, int area){
+		// super();
 		String i1 = letters.substring(area,area+1);
 		String i2 = isMale?"1":"2";
 		String newid = i1.concat(i2)

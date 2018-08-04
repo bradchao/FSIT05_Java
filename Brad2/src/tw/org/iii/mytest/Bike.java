@@ -1,7 +1,7 @@
 package tw.org.iii.mytest;
 
-public class Bike {
-	private double speed;
+public class Bike extends Object{
+	double speed;
 	
 	Bike(){
 		speed = 0;
