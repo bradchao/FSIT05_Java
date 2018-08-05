@@ -78,5 +78,9 @@ public class TWId extends Object{
 		return "台中市";
 	}
 	
+	@Override
+	public String toString() {
+		return id;
+	}
 	
 }
