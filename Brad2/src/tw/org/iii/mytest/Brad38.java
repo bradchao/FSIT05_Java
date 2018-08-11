@@ -8,12 +8,12 @@ import java.awt.event.WindowListener;
 import javax.swing.JFrame;
 
 public class Brad38 extends JFrame{
-	private MyPanel myPanel;
+	private MyPanelV3 myPanel;
 	
 	public Brad38() {
 		setLayout(new BorderLayout());
 		
-		myPanel = new MyPanel();
+		myPanel = new MyPanelV3();
 		add(myPanel, BorderLayout.CENTER);
 		
 		addWindowListener(new MyLinstener());
