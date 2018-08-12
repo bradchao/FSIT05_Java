@@ -35,11 +35,12 @@ public class TWId extends Object{
 	private TWId(String id){
 		this.id = id;
 	}
-	static TWId createTWId(String id) {
+	static TWId createTWId(String id) throws Exception {
 		if (checkId(id)) {
 			return new TWId(id);
 		}else {
-			return null;
+			throw new Exception();
+			//return null;
 		}
 	}
 	

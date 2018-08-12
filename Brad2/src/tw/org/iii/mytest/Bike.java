@@ -1,6 +1,8 @@
 package tw.org.iii.mytest;
 
-public class Bike extends Object{
+import java.io.Serializable;
+
+public class Bike extends Object implements Serializable{
 	double speed;
 	
 	Bike(){
