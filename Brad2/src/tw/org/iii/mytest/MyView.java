@@ -6,10 +6,11 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.LinkedList;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 public class MyView extends JPanel {
@@ -39,6 +40,21 @@ public class MyView extends JPanel {
 				g2d.drawLine(p0.x, p0.y, p1.x, p1.y);
 			}
 		}
+	}
+	
+	public void saveJPEG() {
+		BufferedImage paintImage = 
+			new BufferedImage(
+				getWidth(), getHeight(), 
+				BufferedImage.TYPE_3BYTE_BGR);
+		Graphics2D graphics2D = paintImage.createGraphics();
+	    paint(graphics2D);
+		try {
+			ImageIO.write(paintImage, "jpeg", new File("dir1/brad1.png"));
+		}catch(Exception e) {
+			
+		}
+		
 	}
 	
 	public void clear() {
