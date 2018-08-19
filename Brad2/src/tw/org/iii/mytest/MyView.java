@@ -8,6 +8,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.Serializable;
 import java.util.LinkedList;
 
 import javax.imageio.ImageIO;
@@ -50,9 +51,9 @@ public class MyView extends JPanel {
 		Graphics2D graphics2D = paintImage.createGraphics();
 	    paint(graphics2D);
 		try {
-			ImageIO.write(paintImage, "jpeg", new File("dir1/brad1.png"));
+			ImageIO.write(paintImage, "jpeg", new File("dir1/brad1.jpg"));
 		}catch(Exception e) {
-			
+			System.out.println(e);
 		}
 		
 	}
@@ -75,6 +76,12 @@ public class MyView extends JPanel {
 		}
 	}
 	
+	public LinkedList<LinkedList<MyPoint>> getLines() {return lines;}
+	public void setLines(LinkedList<LinkedList<MyPoint>> lines) {
+		this.lines = lines;
+		repaint();
+	}
+	
 	private class MyMouseListener extends MouseAdapter {
 		@Override
 		public void mousePressed(MouseEvent e) {
@@ -91,12 +98,10 @@ public class MyView extends JPanel {
 			lines.getLast().add(point);
 			repaint();
 		}
-		
 	}
-	
-	private class MyPoint {
-		int x, y;
-		public MyPoint(int x, int y) {this.x =x ; this.y = y;}
-	}
-	
 }
+class MyPoint implements Serializable {
+	int x, y;
+	public MyPoint(int x, int y) {this.x =x ; this.y = y;}
+}
+
